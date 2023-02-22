@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml.gz
+Sitemap: https://msuavc.github.io/avc_wiki/sitemap.xml.gz
