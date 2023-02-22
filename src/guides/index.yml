@@ -1,0 +1,6 @@
+label: Guides
+icon: book
+order: 998 # this means that this will be the highest placed folder
+authors:
+  - name: Dominic Mazza
+    email: mazzadom@msu.edu

@@ -1,0 +1,6 @@
+label: Learning 
+icon: mortar-board 
+order: 1000 # this means that this will be the highest placed folder
+authors:
+  - name: Dominic Mazza
+    email: mazzadom@msu.edu
