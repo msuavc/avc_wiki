@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730418514228">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 2.4.0">
+
+    <!-- Primary Meta Tags -->
+    <title>ROS Basics | Widgets</title>
+    <meta name="title" content="ROS Basics | Widgets">
+    <meta name="description" content="For the vehicle to run as we need it to, it needs to have a backend program that is able to coordinate the flow of data between the sensors and the..." />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/learning/ros-basics/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/learning/ros-basics/">
+    <meta property="og:title" content="ROS Basics | Widgets">
+    <meta property="og:description" content="For the vehicle to run as we need it to, it needs to have a backend program that is able to coordinate the flow of data between the sensors and the...">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/learning/ros-basics/">
+    <meta property="twitter:title" content="ROS Basics | Widgets">
+    <meta property="twitter:description" content="For the vehicle to run as we need it to, it needs to have a backend program that is able to coordinate the flow of data between the sensors and the...">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../static/branding/avc_rounded_logo.png" rel="icon" />
+    <link href="../../resources/css/retype.css?v=2.4.0.730418514228" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730418514228" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730418514228" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730418514228" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../static/branding/avc_rounded_logo.png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../static/branding/avc_rounded_logo.png">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">AVC</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="../../">Home</a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="../../learning/tutorials/">Tutorials</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="../../">Home</a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="../../learning/tutorials/">Tutorials</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="grow min-w-0 px-6 md:px-16">
+                        <main class="relative pt-6 pb-16">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="ros-basics" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ros-basics">#</doc-anchor-trigger>
+        <span>ROS Basics</span>
+    </h1>
+</doc-anchor-target>
+<p>For the vehicle to run as we need it to, it needs to have a backend program that is able to coordinate the flow of data between the sensors and the software that converts that sensor data into controls, detections, and other more relevant data for the vehicle to run autonomously. ROS is the solution that the team, and many others in the robotics industry, uses in order to do this coordination.</p>
+<p>This page provides a general high-level overview of basic components in ROS, as well as the command-line tools that allow for inspection of these components.</p>
+<doc-anchor-target id="what-is-ros">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#what-is-ros">#</doc-anchor-trigger>
+        <span>What is ROS?</span>
+    </h2>
+</doc-anchor-target>
+<hr />
+<p>ROS is middleware used to lighten the development load of robotics applications. Before software like ROS, developing any robotics platform required many man hours of development on features needed to just get the system running. If you were developing a system as complex as ours from scratch, you would need to develop every component in the system, from data management to testing. The project itself may even stall before the interesting research happens!</p>
+<p>With ROS, most of the backend work is taken care of by the software itself. ROS is also a modular framework, meaning that you can swap different components as you see fit, only having to worry about inputs and outputs with each software component and not about how to handle all the low-level dataflow and implementation details.</p>
+<doc-anchor-target id="relevant-links">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#relevant-links">#</doc-anchor-trigger>
+        <span>Relevant Links:</span>
+    </h2>
+</doc-anchor-target>
+<hr />
+<p>More comprehensive introductions to ROS can be found here:</p>
+<ul>
+<li><a href="https://roboticsbackend.com/what-is-ros/">What Is ROS?</a></li>
+<li><a href="http://wiki.ros.org/ROS/Introduction">Introduction to ROS</a></li>
+</ul>
+<p>Additionally, if at any time you cannot find the answers you are looking for here, the ROS wiki is a great resource that will fill you in on the finer details without having you frantically google everything:</p>
+<ul>
+<li><a href="http://wiki.ros.org/ROS">http://wiki.ros.org/ROS</a></li>
+</ul>
+<p>Finally, each section will have links directing you towards comprehensive documentation provided by the ROS development team itself. Most of the information is explained in much more detail there, and many of the command-line instructions found below are a simple subset of the functionality they actually offer. <strong>It is encouraged that you read this links during/after your time reading this document.</strong></p>
+<doc-anchor-target id="packages">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#packages">#</doc-anchor-trigger>
+        <span>Packages</span>
+    </h1>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/Packages">ROS Reference for Packages</a></p>
+<p>Packages are at the core of ROS’ system. Packages contain all nodes, services, message types, and more that are present in the system. At a basic level, however, they are just directories containing source code and configuration files allowing for separation of codebases based on their purpose. This is ROS’ way of handling part of directory management for you.</p>
+<doc-anchor-target id="directories-and-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#directories-and-files">#</doc-anchor-trigger>
+        <span>Directories and Files</span>
+    </h2>
+</doc-anchor-target>
+<hr />
+<p>A ROS package, at a basic level, is just a parent directory. This parent can contain anything, but the files subdirectories that are relevant to the package are explained below:</p>
+<doc-anchor-target id="src">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#src">#</doc-anchor-trigger>
+        <span><code v-pre>./src/</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This is where all of your python source code will be stored, and in that source code will be nodes, services, and other coded functionality on the vehicle.</p>
+<doc-anchor-target id="srcpackage_name">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#srcpackage_name">#</doc-anchor-trigger>
+        <span><code v-pre>./src/package_name</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This is where all of your C++ source code will be stored, and in that source code will be nodes, services, and other coded functionality on the vehicle.</p>
+<doc-anchor-target id="cmakeliststxt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cmakeliststxt">#</doc-anchor-trigger>
+        <span><code v-pre>./CMakeLists.txt</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This is the cmake build file for the package, and it is required for building and running the package. Stored in here are all the cmake directives and other information needed to actually build the package for use. I will not go into the contents of this file here, as it is quite complex and is created when building a package (<em>See Development in ROS).</em> For more information about the contents of this file, you can also refer to <a href="http://wiki.ros.org/catkin/CMakeLists.txt">ROS’ CMakeLists documentation</a>.</p>
+<doc-anchor-target id="packagexml">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#packagexml">#</doc-anchor-trigger>
+        <span><code v-pre>./package.xml</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This file is the package manifest, and it is another file required for building and running from a package. Information here is similar to <code v-pre>CMakeLists.txt</code> , and similarly, I will not go into the file contents due to complexity. For information, you can also refer to <a href="http://wiki.ros.org/catkin/package.xml">ROS’ package.xml documentation</a>.</p>
+<doc-anchor-target id="msg">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#msg">#</doc-anchor-trigger>
+        <span><code v-pre>./msg/</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This folder will contain all custom message types defined in the package. Most packages will not need this, as there are both ROS provided and custom defined messages already defined in the system that should suffice. If not, however, this folder is here.</p>
+<p><em>More about ROS messages below.</em></p>
+<doc-anchor-target id="srv">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#srv">#</doc-anchor-trigger>
+        <span><code v-pre>./srv/</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This folder will contain all custom defined service types. If you are creating a service, you will define the data the service will request and reply here.</p>
+<doc-anchor-target id="scripts">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scripts">#</doc-anchor-trigger>
+        <span><code v-pre>./scripts/</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This folder will contain any executable scripts needed to run the package here, as well as any you develop that will be relevant to package use. Nodes/services will not be defined here, but if you, for example, use a shell script in a node or service, it would be placed here.</p>
+<doc-anchor-target id="includepackage_name">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#includepackage_name">#</doc-anchor-trigger>
+        <span><code v-pre>./include/package_name</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This directory is where all of your c++ header files will go if applicable.</p>
+<doc-anchor-target id="package-inspection">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#package-inspection">#</doc-anchor-trigger>
+        <span>Package Inspection</span>
+    </h2>
+</doc-anchor-target>
+<hr />
+<p>ROS provides the <code v-pre>rospack</code> command-line tool in order to inspect packages:https://docs.ros.org/en/independent/api/rospkg/html/rospack.html</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this will list all packages
+rospack list
+
+# this will display the absolute path of the package
+rospack find {package_name}
+
+# this will display the dependencies of a given package
+rospack depends {package_name}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="data-flow">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data-flow">#</doc-anchor-trigger>
+        <span>Data Flow</span>
+    </h1>
+</doc-anchor-target>
+<p>Data flow in ROS is described more technically here: <a href="http://wiki.ros.org/ROS/Concepts">ROS Concepts</a></p>
+<p>In ROS, data flow is handled by a peer-to-peer network of individual pieces of software. These &quot;nodes&quot; are able to request and output data as you see fit. ROS handles this quite smartly, and loosely couples building blocks of software and data together to allow for software to be changed in a modular fashion.</p>
+<doc-anchor-target id="messages">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#messages">#</doc-anchor-trigger>
+        <span>Messages</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/msg">ROS Reference for Messages</a></p>
+<hr />
+<p>Messages, and message types, are the primary abstraction used for data in the system. ROS provides wrappers for many primitive types to enable cohesion in the system.</p>
+<p>Each message in ROS has a type, and ROS provides many types out of the box. These types can be easily googled, but a full list of primitive types supplied is found here:</p>
+<p><a href="http://docs.ros.org/en/noetic/api/std_msgs/html/index-msg.html">http://docs.ros.org/en/noetic/api/std_msgs/html/index-msg.html</a></p>
+<p>For example, the ROS type for a header, which provides data for the order of messages being sent and the sequence in which they are sent is represented as so:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Standard metadata for higher-level stamped data types.
+# NOTE: stamped types mean that they have this header
+# This is generally used to communicate timestamped data 
+# in a particular coordinate frame.
+# 
+# sequence ID: consecutively increasing ID 
+uint32 seq
+#Two-integer timestamp that is expressed as:
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+# time-handling sugar is provided by the client library
+time stamp
+#Frame this data is associated with
+string frame_id</code></pre>
+</doc-codeblock></div>
+<p>Googling these types will only get you so far, as in ROS there is also the ability to define custom types. These types will not be documented anywhere besides in the codebase, and there is a command-line tool for accessing the specifications for each type: <a href="http://wiki.ros.org/rosmsg">http://wiki.ros.org/rosmsg</a>. Below are some basic commands that will be useful:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this is the main command you will use to inspect message types
+rosmsg show {message_type}
+
+# for example, to output what is displayed above, you would run
+rosmsg show std_msgs/Header</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="topics">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#topics">#</doc-anchor-trigger>
+        <span>Topics</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/Topics">ROS Reference for Topics</a></p>
+<hr />
+<p>Topics are a fundamental way ROS moves messages through the vehicle system. Topics are published and subscribed to by nodes, allowing nodes to exchange data with each other.</p>
+<p>Topics have a very specific naming scheme in ROS:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this is an example of a topic in ROS
+# &quot;perception&quot; and &quot;camera&quot; define the specific namespace that the topic
+# resides in
+# &quot;image&quot; describes the actual data that the nodes are providing in that
+# namespace
+/perception/camera/image</code></pre>
+</doc-codeblock></div>
+<p>All messages passed via nodes can be accessed through these topic names, and all data published in ROS will have an associate topic. Topics can be accessed by any other node in the system, as long as the nodes providing them are running.</p>
+<p>To access topics, and see their content, a command-line tool called <code v-pre>rostopic</code> is utilized. Below are some basic commands using that tool: <a href="http://wiki.ros.org/rostopic">http://wiki.ros.org/rostopic</a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this will produce a list of topics currently available in the system
+rostopic list
+
+# this will show you more information about a specific topic, like the message 
+# type, which node is providing it, etc.
+rostopic info {topic_name}
+
+# this will show you the actual data in the topic
+rostopic show {topic_name}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="nodes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nodes">#</doc-anchor-trigger>
+        <span>Nodes</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/Nodes">ROS Reference for Nodes</a></p>
+<hr />
+<p>A node in ROS is one of the fundamental building blocks of the software. A node serves as the basic computational unit in ROS, and the brunt of the work you do on the vehicle is node-based.</p>
+<p>A node in ROS can both publish and subscribe to topics in the ROS system. Nodes can also provide services, which are discussed in the next section.</p>
+<blockquote>
+<p>Publishing: Providing data to the ROS system
+Subscribing: Getting data from another node in the ROS system</p>
+</blockquote>
+<p>Each node has a name in the system that is user defined, and these are part of what determine namespaces in ROS. A node handling raw camera input and output could be named <code v-pre>/camera</code></p>
+<p>In a ROS node, data is manipulated via the programming languages C++ and Python. Each node is responsible for a step in the process of data movement in the system. For example, to make the car detect objects, there <a href="http://wiki.ros.org/rosnode">http://wiki.ros.org/rosnode</a>will be a detection pipeline needed starting from the camera and ending with whatever handles responding to detections. This pipeline would have multiple nodes, starting with <code v-pre>/camera</code> publishing to the topic <code v-pre>/camera/image</code> , and that would be picked up by the node <code v-pre>/detector</code> which would then publish its detections on <code v-pre>/detector/detections</code>. These detections would then be used by other nodes in the system as they see fit.</p>
+<p>Similar to messages and topics, there is a command-line tool to inspect nodes: <a href="http://wiki.ros.org/rosnode">http://wiki.ros.org/rosnode</a>. Some basic commands for inspecting nodes are found below:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this will list all the nodes available in the current system
+rosnode list
+
+# this will display information about a node, such as what messages are being 
+# published by and subscribed to by the node
+rosnode info /{node_name}
+
+# this will kill a node that is running
+rosnode kill /{node_name}</code></pre>
+</doc-codeblock></div>
+<hr />
+<doc-anchor-target id="services">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
+        <span>Services</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/Services">ROS Reference for Services</a></p>
+<hr />
+<p>With publishing and subscribing, you have a data flow that provides data from many nodes in the system to many other nodes in the system, The caveat is that dataflow in this structure is largely one way.</p>
+<p>ROS services provide a different way of implementing data flow in ROS, a request/reply based framework. This is very useful when building up quick computations and actions that do not need to be integrated in the larger system. For example, if you want a quick way to change settings on the vehicle, use a service! You can configure a service to change those settings, and then configure it to reply on a success.</p>
+<p>ROS services are defined and displayed similar to messages. The key difference is that a message will have one single section of fields defining the datatypes shown in the message, whereas services have two. The first is the <code v-pre>request</code> body, and this defines all the data the service needs to handle the request. The second is the <code v-pre>response</code> body, which defines the data the service will provide upon completing the request. A service will look something like this (example pulled from <a href="http://wiki.ros.org/srv">http://wiki.ros.org/srv</a>):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">#request constants
+int8 FOO=1
+int8 BAR=2
+#request fields
+int8 foobar
+another_pkg/AnotherMessage msg
+--- # delineater defining where request types end and response types begin
+#response constants
+uint32 SECRET=123456
+#response fields
+another_pkg/YetAnotherMessage val
+CustomMessageDefinedInThisPackage value
+uint32 an_integer</code></pre>
+</doc-codeblock></div>
+<p>To see ROS services from a command-line interface, you can use two tool: <code v-pre>rossrv</code> , which functions very similarly to <code v-pre>rosmsg</code>, and <code v-pre>rosservice</code> , which is used to actively request services themselves and display services actively running in the system. Here are some examples for <code v-pre>rossrv</code> and <code v-pre>rosservice</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># rossrv
+# this will display output similar to the above codeblock
+rossrv show {service}
+
+# this will list all services (even offline services)
+rossrv list
+
+# this will list all services a package provides
+rossrv package
+
+# this will list all packages that contain a service
+rossrv packages</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># rosservice
+# this will print info about an active service
+rosservice info {service}
+
+# this will list all active services
+rosservice list
+
+# this will display the type for the service
+rosservice type {service}
+
+# this will call a service will specific args
+rosservice call /{service-name} {service_input}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="parameters">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#parameters">#</doc-anchor-trigger>
+        <span>Parameters</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/Parameter%20Server">ROS Reference for Parameters</a></p>
+<hr />
+<p>Parameters are how to set global constants in ROS. These are useful in many areas, such as configuration settings, numerical constants, and much more. You will use services for constants designed not to be changed often, as parameters are not used for high frequency dataflow.</p>
+<p>As these are designed to be constants, the datatypes available for params are as follows:</p>
+<ul>
+<li>32-bit integers</li>
+<li>booleans</li>
+<li>strings</li>
+<li>doubles</li>
+<li>iso8601 dates</li>
+<li>lists</li>
+<li>base64-encoded binary data</li>
+</ul>
+<p>The command-line tool <code v-pre>rosparam</code> displays relevant information about parameters and their contents:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this lists parameter names
+rosparam list
+rosparam list /{namespace}
+
+# this gets a parameter value
+rosparam get {parameter_name}
+
+# this sets a parameter valie
+rosparam set {parameter_name} {value}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="bags">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bags">#</doc-anchor-trigger>
+        <span>Bags</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="http://wiki.ros.org/rosbag">ROS Reference for Bags</a></p>
+<hr />
+<p>In a robotics system, you may not have access to the robot whenever you need to develop something. Additionally, it is not practical to assume that you can spin up the vehicle to actively test what your software does in response to vehicle data. ROS provides a data storage solution called <code v-pre>rosbags</code> that solves this.</p>
+<p>Specifically in our development environment, you have access to bags recorded at many times of the year with sensor data from the vehicle. These bags can be played, and when they are played, will spawn topics with data collected from that time. This will simulate what the car would actually output when it is running, and will allow you to rapidly test and develop.</p>
+<p>Similar to all the other items above, there is a command-line tool for you to create and play these bags: <a href="http://wiki.ros.org/rosbag/Commandline">http://wiki.ros.org/rosbag/Commandline</a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># this will record a bag of topics specified
+rosbag record {topic1} {topic2}
+
+# this will display the start/end times of bags, and the topics contained
+rosbag info {bag_file}
+
+# this will play a bag
+rosbag play {bag_file}
+
+# this will loop a bag/bags
+rosbag play -l {bag_file}</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Welcome</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../learning/git-basics/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Git Basics</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                        <li>
+                                            <a class="block mr-4 py-2 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="../../license/">License</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "ROS Basics", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
