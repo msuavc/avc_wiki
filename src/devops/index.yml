@@ -1,0 +1,6 @@
+label: DevOps
+icon: device-desktop
+order: 997 # this means that this will be the highest placed folder
+authors:
+  - name: Dominic Mazza
+    email: mazzadom@msu.edu
