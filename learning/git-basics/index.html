@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/avc_wiki">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730418991237">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731044791214">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/avc_wiki/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/branding/avc_rounded_logo.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730418991237" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.731044791214" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730418991237" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.731044791214" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -193,10 +193,10 @@
 <p>We specifically use MSU’s gitlab service, and you can access the AVC group here:
 <a href="https://gitlab.msu.edu/canvas/avc">AVC GitLab</a></p>
 <doc-anchor-target id="branches">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#branches">#</doc-anchor-trigger>
         <span>Branches</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>We will be using multiple git branches to coordinate development and isolate changes from each other. The main branch of the repository will be the branch <code v-pre>dev</code>. To get a local copy of the repository on your system, you will first execute the commands:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -210,7 +210,7 @@ git checkout dev</code></pre>
 <p>When you are working on anything, whether it is a bugfix, feature, or testing code, you will create a new branch specifically for that purpose using the commands below.</p>
 <div class="codeblock-wrapper"><doc-codeblock line-numbers>
 <pre class="language-python"><code v-pre class="language-python"># this command will create the branch needed
-# when naming this branch, use snake case, and be as descriptive 
+# when naming this branch, use snake case, and be as descriptive
 # as you can be without being wordy
 git branch {branch name}
 
@@ -221,10 +221,10 @@ git checkout {branch name}
 git branch</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="making-changes-to-a-branch">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#making-changes-to-a-branch">#</doc-anchor-trigger>
         <span>Making Changes to a Branch</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p><a href="https://www.atlassian.com/git/tutorials/using-branches">Using Branches</a></p>
 <p>When you are actively developing on the car, you will want to commit and push working code to the remote copy of the repo (the gitlab copy) in order to track the changes you’ve made.</p>
@@ -321,7 +321,7 @@ git commit
 <p><a href="https://www.atlassian.com/git/tutorials/syncing/git-push">The Push Command</a></p>
 <p>Okay awesome! Now you’ve committed your changes to the local repo. You are able to track them and you can see a nice commit history detailing all the changes you’ve made. However, if you look at the gitlab, you will not see any of your changes there. This is because running <code v-pre>git commit</code> only commits changes locally. To have the remote repo track your changes, you need to use the <code v-pre>git push</code> command.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># this command will push your code to the remote copy of the branch you are 
+<pre class="language-bash"><code v-pre class="language-bash"># this command will push your code to the remote copy of the branch you are
 # currently on
 git push -u origin {branch name}</code></pre>
 </doc-codeblock></div>
@@ -343,10 +343,10 @@ git stash apply</code></pre>
 </doc-codeblock></div>
 <hr />
 <doc-anchor-target id="making-a-merge-request">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#making-a-merge-request">#</doc-anchor-trigger>
         <span>Making a Merge Request</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>The final git basic we will discuss is making merge requests. Merge requests are needed to ensure that multiple sets of eyes will see what changes you have made to the codebase, and serve as a barrier allowing team and program leads to ensure that the changes look good. Merge requests are to be done when a feature is complete, tested, and ready to be run on the vehicle, or when a bugfix has been completed. Below is a link specifying how to actually create a merge request using GitLab, and its recommended that you follow these steps to create one:</p>
 <p><a href="https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html">Creating Merge Requests</a></p>

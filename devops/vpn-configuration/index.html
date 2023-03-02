@@ -10,24 +10,26 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Replaying Recorded Data | Widgets</title>
-    <meta name="title" content="Replaying Recorded Data | Widgets">
-    <meta name="description" content="During software development it is common to test software and algorithms on pre-recorded real-world and simulated data." />
+    <title>VPN Configuration | Widgets</title>
+    <meta name="title" content="VPN Configuration | Widgets">
+    <meta name="description" content="To access AVC compute/IT resources available for you to develop, you will need to configure our VPN on your current system." />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://msuavc.github.io/avc_wiki/guides/rosbags/" />
+    <link rel="canonical" href="https://msuavc.github.io/avc_wiki/devops/vpn-configuration/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://msuavc.github.io/avc_wiki/guides/rosbags/">
-    <meta property="og:title" content="Replaying Recorded Data | Widgets">
-    <meta property="og:description" content="During software development it is common to test software and algorithms on pre-recorded real-world and simulated data.">
+    <meta property="og:url" content="https://msuavc.github.io/avc_wiki/devops/vpn-configuration/">
+    <meta property="og:title" content="VPN Configuration | Widgets">
+    <meta property="og:description" content="To access AVC compute/IT resources available for you to develop, you will need to configure our VPN on your current system.">
+    <meta property="og:image" content="https://msuavc.github.io/avc_wiki/static/uploads/0d9900602e6d7100b3ae052072c0e72e/screen_shot_2021-01-14_at_6.54.22_pm.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://msuavc.github.io/avc_wiki/guides/rosbags/">
-    <meta property="twitter:title" content="Replaying Recorded Data | Widgets">
-    <meta property="twitter:description" content="During software development it is common to test software and algorithms on pre-recorded real-world and simulated data.">
+    <meta property="twitter:url" content="https://msuavc.github.io/avc_wiki/devops/vpn-configuration/">
+    <meta property="twitter:title" content="VPN Configuration | Widgets">
+    <meta property="twitter:description" content="To access AVC compute/IT resources available for you to develop, you will need to configure our VPN on your current system.">
+    <meta property="twitter:image" content="https://msuavc.github.io/avc_wiki/static/uploads/0d9900602e6d7100b3ae052072c0e72e/screen_shot_2021-01-14_at_6.54.22_pm.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/avc_wiki/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -179,13 +181,47 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="replaying-recorded-data" class="break-words">
+<doc-anchor-target id="vpn-configuration" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#replaying-recorded-data">#</doc-anchor-trigger>
-        <span>Replaying Recorded Data</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vpn-configuration">#</doc-anchor-trigger>
+        <span>VPN Configuration</span>
     </h1>
 </doc-anchor-target>
-<p>During software development it is common to test software and algorithms on pre-recorded real-world and simulated data.  ROS enables this ability through the use of <code v-pre>.bag</code> files.  Each <code v-pre>.bag</code> contains the topics which were selected to be recorded at the time the file was created.</p>
+<p>To access AVC compute/IT resources available for you to develop, you will need
+to configure our VPN on your current system. The following instructions will tell
+you how to install the VPN on whatever platform you use.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Operating System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><doc-anchor-trigger to="#ubuntu">Ubuntu</doc-anchor-trigger></td>
+</tr>
+<tr>
+<td><doc-anchor-trigger to="#windows">Windows</doc-anchor-trigger></td>
+</tr>
+<tr>
+<td><doc-anchor-trigger to="#macos">MacOS</doc-anchor-trigger></td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="ubuntu">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ubuntu">#</doc-anchor-trigger>
+        <span>Ubuntu</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="1-set-up-apt-to-use-the-openvpnnet-repository">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-set-up-apt-to-use-the-openvpnnet-repository">#</doc-anchor-trigger>
+        <span>1. Set up apt to use the openvpn.net repository</span>
+    </h3>
+</doc-anchor-target>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -199,94 +235,72 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-            <h5>Creating Rosbags</h5>
-<p>See the <a href="http://wiki.ros.org/rosbag/Commandline#record">ROS Wiki article</a> on the rosbag tool for more information on creating, playing, and inspecting <code v-pre>.bag</code> files.</p>
+            <h5>Ubuntu 18.04+</h5>
+<p>Ubuntu 18.04+ users can skip step one</p>
         </div>
     </div>
 </div>
-<doc-anchor-target id="ros-dataset-locations">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ros-dataset-locations">#</doc-anchor-trigger>
-        <span>ROS Dataset Locations</span>
-    </h1>
+<doc-anchor-target id="a-download-the-openvpn-key-and-add-it-to-ubuntus-apt-key-repository">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#a-download-the-openvpn-key-and-add-it-to-ubuntus-apt-key-repository">#</doc-anchor-trigger>
+        <span>a. Download the OpenVPN key and add it to Ubuntu&#x27;s apt key repository</span>
+    </h4>
 </doc-anchor-target>
-<p>The AVC team typically stores recorded datasets in on the NAS, which is mounted to most AVC servers and Docker environments under <code v-pre>/mnt</code>.  External datasets (such as BDD100K, NuScenes, etc.) are mounted under <code v-pre>/mnt/datasets-external</code> while internal datasets, produced by the SOAR team, are available under <code v-pre>/mnt/datasets</code> and <code v-pre>/mnt/dataset-dropbox</code>.</p>
-<doc-anchor-target id="playing-ros-bag-data">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#playing-ros-bag-data">#</doc-anchor-trigger>
-        <span>Playing ROS Bag Data</span>
-    </h1>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">wget https://swupdate.openvpn.net/repos/repo-public.gpg
+sudo apt-key add repo-public.gpg</code></pre>
+</doc-codeblock></div>
+<p>Alternatively, can be done from the &quot;Software and Updates&quot; application:
+under the &quot;Authentication&quot; tab, click &quot;Import Key File,&quot; and select the
+key downloaded from the above URL.</p>
+<doc-anchor-target id="b-add-the-repository-to-your-apt-lists">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#b-add-the-repository-to-your-apt-lists">#</doc-anchor-trigger>
+        <span>b. Add the repository to your apt lists</span>
+    </h4>
 </doc-anchor-target>
-<p>To play the ROS bag data, a system with ROS installed must be used. The most convenient way to do this for most will be through the use of the <a href="https://gitlab.msu.edu/canvas/soar/software/docker">AVC vehicle docker</a>. Once inside the docker, simply start <code v-pre>roscore</code>, then run:</p>
+<p>This step can be done from the GUI or from the command line.
+Choose one of the methods below.</p>
+<ul>
+<li><strong>command line:</strong></li>
+</ul>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rosbag play --clock path-to-desired.bag</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo sh -c \
+  'echo &quot;deb http://build.openvpn.net/debian/openvpn/stable xenial main&quot; \
+      &gt;&gt; /etc/apt/sources.list.d/openvpn-repo.list'</code></pre>
 </doc-codeblock></div>
-<p>This will play the rosbag, allowing the system to act as if it is ingesting real time data.</p>
-<p>If a large number of bag files are included in the folder (i.e. <code v-pre>bag_1.bag, bag_2.bag, ... bag_n.bag</code>)and you would like to run over all of them, use:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rosbag play --clock bag_*.bag</code></pre>
-</doc-codeblock></div>
-<p>Finally, to loop continuously, as is often desirable when testing, use the <code v-pre>-l</code> flag:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rosbag play --clock -l bag_*.bag</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="visualizing-using-rviz">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#visualizing-using-rviz">#</doc-anchor-trigger>
-        <span>Visualizing Using Rviz</span>
-    </h1>
+<ul>
+<li><strong>gui:</strong> in the &quot;Software and Updates&quot; application, under the &quot;Other Software&quot;
+tab, click &quot;Add&quot; and copy the following line into the box:
+deb <a href="http://build.openvpn.net/debian/openvpn/stable">http://build.openvpn.net/debian/openvpn/stable</a> xenial main</li>
+</ul>
+<doc-anchor-target id="c-refresh-your-package-lists">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#c-refresh-your-package-lists">#</doc-anchor-trigger>
+        <span>c. Refresh your package lists</span>
+    </h4>
 </doc-anchor-target>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
-                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-            <h5>Using Simulated Time</h5>
-<p>To visualize pre-recorded <code v-pre>.bag</code> data using Rviz, first set the directive to use simulated time (i.e. the time the data was recorded, and not the current time), otherwise Rviz will see the data is stale and ignore it.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rosparam set /use-sim-time true</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt update</code></pre>
 </doc-codeblock></div>
-        </div>
-    </div>
-</div>
-<p>First, start up <code v-pre>rviz</code> to graphically display data.</p>
+<doc-anchor-target id="2-install-openssl-and-related-support-packages">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-install-openssl-and-related-support-packages">#</doc-anchor-trigger>
+        <span>2. Install OpenSSL and related support packages</span>
+    </h3>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rosrun rviz rviz</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install openvpn network-manager-openvpn network-manager-openvpn-gnome</code></pre>
 </doc-codeblock></div>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
-                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-            <h5>Transforms</h5>
-<p>To properly display data, the transforms for the vehicle must be published. You can verify this by checking if the <code v-pre>/tf_static</code>
-topic is running by listing active topics using the command:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">rostopic list</code></pre>
-</doc-codeblock></div>
-<p>If the /tf_static topic is not published, then you can launch the transform manager with this command:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">roslaunch ~/vehicle/src/bolt_launch/launch/tf_tree.launch</code></pre>
-</doc-codeblock></div>
-        </div>
-    </div>
-</div>
-<p>Once the <code v-pre>/tf_static</code> topic is published (through either of the methods above), the fixed frame may be selected. To do so, select the the drop-down in the upper left corner of the window under &quot;Displays &gt; Global Options &gt; Fixed Frame&quot; and select &quot;base_link&quot;.</p>
-<p>Next, below the &quot;Displays&quot; window should be a button which says &quot;Add&quot;, select this, then select the &quot;By Topic&quot; tab – if the ROS bag is playing, topics should be listed in this tab.  Lidar objects will be viewable as &quot;PointCloud2&quot; objects, and cameras as &quot;Images&quot; and so on.</p>
+<doc-anchor-target id="3-configure-network-manager-with-openssl">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-configure-network-manager-with-openssl">#</doc-anchor-trigger>
+        <span>3. Configure Network Manager with OpenSSL</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Download and uncompress all the contents of the AVC VPN configuration ZIP
+file: <a href="https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view?usp=sharing">https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view?usp=sharing</a>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
     <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
@@ -300,8 +314,291 @@ topic is running by listing active topics using the command:</p>
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-            <h5>Visualizing Points</h5>
-<p>One final note, with lidar objects, it is helpful to visualize these as &quot;Points&quot; as opposed to &quot;flat squares&quot; as is the default option. Not only are points easier to see, but they are also typically faster to render on weaker systems. Also consider setting Alpha to 1 on lower-end systems to reduce render times.</p>
+            <h5>Credentials</h5>
+Note: for step 1 you will need to have been given access to the Google
+Drive, and be signed in using your MSU Google Apps account
+(your @msu.edu email).
+        </div>
+    </div>
+</div>
+</li>
+<li>Open the &quot;Settings&quot; program and navigate to &quot;Network&quot;. Then click &quot;+&quot;</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../../static/uploads/0d9900602e6d7100b3ae052072c0e72e/screen_shot_2021-01-14_at_6.54.22_pm.png" alt="Screen_Shot_2021-01-14_at_6.54.22_PM" />
+    <figcaption class="caption">Screen_Shot_2021-01-14_at_6.54.22_PM</figcaption>
+</figure>
+</p>
+<ol start="3">
+<li>Next to the VPN section, click the + button to add a new connection.</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../../static/uploads/aee5ac5c7ff43e55df7ec7fce356a4be/screenshot_from_2021-01-14_15-53-59.png" alt="Screenshot_from_2021-01-14_15-53-59" />
+    <figcaption class="caption">Screenshot_from_2021-01-14_15-53-59</figcaption>
+</figure>
+</p>
+<ol start="4">
+<li>Select &quot;Import a saved file...&quot;</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../../static/uploads/b90876dd07afa2ac801b5a39e627beda/screenshot_from_2021-01-14_15-58-00.png" alt="Screenshot_from_2021-01-14_15-58-00" />
+    <figcaption class="caption">Screenshot_from_2021-01-14_15-58-00</figcaption>
+</figure>
+</p>
+<ol start="5">
+<li><p>Browse to the &quot;openvpn.conf&quot; from the .zip file.</p>
+</li>
+<li><p>On the next screen, give the connection a different name if desired
+(like AVC server), fill in username (password is optional; if not filled
+you will be prompted for a password upon connecting), and hit &quot;Save&quot;</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Usernames and Passwords</h5>
+<p>Note: the username and password are your DECS username and password, not
+necessarily your AVC server username and password (unless you chose to use the
+same password for both, which is generally not recommended).</p>
+        </div>
+    </div>
+</div>
+</li>
+<li><p>Once configured, select the gear icon next to the VPN configuration in the
+VPN section of the &quot;Network&quot; settings page, select the &quot;IPV4&quot; tab, then check
+&quot;Use this connection only for resources on its network&quot;.</p>
+</li>
+</ol>
+<p><figure class="content-center">
+    <img src="../../static/uploads/a9722ba6cb3a967afe6a5fcedb35b392/screenshot_from_2021-01-15_12-10-18.png" alt="Screenshot_from_2021-01-15_12-10-18" />
+    <figcaption class="caption">Screenshot_from_2021-01-15_12-10-18</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="4-test-connection">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-test-connection">#</doc-anchor-trigger>
+        <span>4. Test Connection</span>
+    </h3>
+</doc-anchor-target>
+<p>Click the network icon, hover over &quot;VPN Connections&quot;, and then select the new
+VPN connection you just made. You should get a message saying a VPN connection
+has been successfully established.</p>
+<doc-anchor-target id="windows">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#windows">#</doc-anchor-trigger>
+        <span>Windows</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="1-download-and-install-openvpn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-download-and-install-openvpn">#</doc-anchor-trigger>
+        <span>1. Download and Install OpenVPN</span>
+    </h3>
+</doc-anchor-target>
+<p>Download OpenVPN from:
+<a href="https://openvpn.net/community-downloads/">https://openvpn.net/community-downloads/</a> and follow the installer to complete installation.</p>
+<doc-anchor-target id="2-configure-the-vpn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-the-vpn">#</doc-anchor-trigger>
+        <span>2. Configure the VPN</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="a-download-the-vpn-config">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#a-download-the-vpn-config">#</doc-anchor-trigger>
+        <span>a. Download the VPN config</span>
+    </h4>
+</doc-anchor-target>
+<p>The OpenVPN configuration .zip file can be downloaded from the following link: <a href="https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view">https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view</a></p>
+<blockquote>
+<p>Note: for step 1 you will need to have 1) been given access to the Google Drive,
+and b) be signed in using your MSU Google Apps account (your @msu.edu email).</p>
+</blockquote>
+<doc-anchor-target id="b-set-configurations">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#b-set-configurations">#</doc-anchor-trigger>
+        <span>b. Set Configurations</span>
+    </h4>
+</doc-anchor-target>
+<ol>
+<li>Unzip the file to a permanent location</li>
+<li>Change the extension of the .conf file to .ovpn</li>
+<li>Open the .conf file and find these lines:</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-batch"><code v-pre class="language-batch">ca ca.crt
+cert client.crt
+key client.key</code></pre>
+</doc-codeblock></div>
+<p>Change the ca.crt, client.crt, and client.key to be full paths, for example
+(with \ as path separators instead of single backslashes):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-batch"><code v-pre class="language-batch">ca C:\\my_vpn\\ca.crt
+cert C:\\my_vpn\\client.crt
+key C:\\my_vpn\\client.key</code></pre>
+</doc-codeblock></div>
+<p>Then, find the lines that say:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-batch"><code v-pre class="language-batch">tls-auth ta.key 1
+auth SHA512</code></pre>
+</doc-codeblock></div>
+<p>Change the ta.key part of the first line to be a full path, similar to the
+previous step, so it looks something like this:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-batch"><code v-pre class="language-batch">tls-auth C:\\my_vpn\\ta.key 1
+auth SHA512</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="c-import-configurations">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#c-import-configurations">#</doc-anchor-trigger>
+        <span>c. Import Configurations</span>
+    </h4>
+</doc-anchor-target>
+<p>Then, run the OpenVPN GUI, then right-click the tray icon, then click “Import
+file”, then select your modified .ovpn file.</p>
+<doc-anchor-target id="3-connecting-to-the-vpn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-connecting-to-the-vpn">#</doc-anchor-trigger>
+        <span>3. Connecting to the VPN</span>
+    </h3>
+</doc-anchor-target>
+<p>To connect, right-cick the OpenVPN tray icon and click “Connect”</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Usernames and Passwords</h5>
+<p>The username and password are your DECS username and password, not necessarily
+your AVC server username and password (unless you chose to use the same
+password for both, which is generally not recommended).</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="macos">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#macos">#</doc-anchor-trigger>
+        <span>MacOS</span>
+    </h2>
+</doc-anchor-target>
+<p>To access the AVC VPN through macOS an OpenVPN client is required (not
+supported natively). The preferred OpenVPN client for macOS is Tunnelblick.</p>
+<doc-anchor-target id="1-install-tunnelblick">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#1-install-tunnelblick">#</doc-anchor-trigger>
+        <span>1. Install Tunnelblick</span>
+    </h3>
+</doc-anchor-target>
+<p>To install Tunnelblick, download and run installer from the following page: <a href="https://tunnelblick.net/downloads.html">https://tunnelblick.net/downloads.html</a></p>
+<doc-anchor-target id="2-download-the-vpn-configuration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#2-download-the-vpn-configuration">#</doc-anchor-trigger>
+        <span>2. Download the VPN Configuration</span>
+    </h3>
+</doc-anchor-target>
+<p>Download and uncompress the AVC VPN configuration file: <a href="https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view?usp=sharing">https://drive.google.com/file/d/1u9A70Hsg0mK2TmBXbBXGWJ7PsEyG7i4H/view?usp=sharing</a></p>
+<blockquote>
+<p>Note: for step 1 you will need to have 1) been given access to the Google
+Drive, and b) be signed in using your MSU Google Apps account (your @msu.edu email).</p>
+</blockquote>
+<doc-anchor-target id="3-import-tunnelblick-configurations">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#3-import-tunnelblick-configurations">#</doc-anchor-trigger>
+        <span>3. Import Tunnelblick Configurations</span>
+    </h3>
+</doc-anchor-target>
+<p>Once Tunnelblick is installed and running, navigate to the uncompressed zip
+folder from (2), then drag the <code v-pre>openvpn.conf</code> file onto the tunnelblick &quot;arch&quot;
+icon in the menu bar (a plus icon should appear on the cursor) and proceed to add
+the configuration.</p>
+<p><figure class="content-center">
+    <img src="../../static/uploads/b1d129ec23745260eebc31ed8e2ff245/screen_shot_2021-01-14_at_6.20.44_pm.png" alt="Screen_Shot_2021-01-14_at_6.20.44_PM" />
+    <figcaption class="caption">Screen_Shot_2021-01-14_at_6.20.44_PM</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="4-connect-to-the-vpn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#4-connect-to-the-vpn">#</doc-anchor-trigger>
+        <span>4. Connect to the VPN</span>
+    </h3>
+</doc-anchor-target>
+<p>To connect, click on the Tunnelblick icon in the menu bar, then select
+&quot;Connect &lt;vpn_name&gt;&quot; where &lt;vpn_name&gt; will likely be something like &quot;openvpn&quot;;
+in the image below the configuration was renamed to &quot;SOAR&quot; (details on renaming
+at the end of this page):</p>
+<p><figure class="content-center">
+    <img src="../../static/uploads/db5bd49f08388ff685b45203f0a60ed4/screen_shot_2021-01-14_at_6.23.48_pm.png" alt="Screen_Shot_2021-01-14_at_6.23.48_PM" />
+    <figcaption class="caption">Screen_Shot_2021-01-14_at_6.23.48_PM</figcaption>
+</figure>
+</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Username and Password</h5>
+<p>Note: the username and password are your DECS username and password, not
+necessarily your autodrive username and password (unless you chose to use
+the same password for both, which is generally not recommended).</p>
+        </div>
+    </div>
+</div>
+<p>To confirm you have been connected you should see:</p>
+<p><figure class="content-center">
+    <img src="../../static/uploads/7894a9becc0578ec52a6a423a53676fa/screen_shot_2021-01-14_at_6.24.47_pm.png" alt="Screen_Shot_2021-01-14_at_6.24.47_PM" />
+    <figcaption class="caption">Screen_Shot_2021-01-14_at_6.24.47_PM</figcaption>
+</figure>
+</p>
+<p>To disconnect, simply press &quot;Disconnect...&quot;.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Changing the Name of the VPN Configuration</h5>
+<p>Note: the name of the VPN configuration may be changed by clicking on the
+Tunnelblick icon in the menu bar, selecting &quot;VPN Details...&quot; then clicking
+on the desired in the left-hand side of the &quot;Configurations&quot; tab of the window
+which opens, then pressing the gear icon at the bottom of the lef-thand side-bar
+and selecting &quot;rename configuration&quot;. This can be renamed to something more recognizable
+such as &quot;AVC&quot;.
+<figure class="content-center">
+    <img src="../../static/uploads/15bcf458a9b6f304d0867c638a59a497/screen_shot_2021-01-14_at_6.26.15_pm.png" alt="Screen_Shot_2021-01-14_at_6.26.15_PM" />
+    <figcaption class="caption">Screen_Shot_2021-01-14_at_6.26.15_PM</figcaption>
+</figure>
+</p>
         </div>
     </div>
 </div>
@@ -314,20 +611,20 @@ topic is running by listing active topics using the command:</p>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workflow/node-creation/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../devops/avc-compute/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Node Creation</span>
+                                                <span class="block mt-1">AVC Remote Computing and IT Servers</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../devops/avc-compute/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../devops/turbo-vnc/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">AVC Remote Computing and IT Servers</span>
+                                                <span class="block mt-1">Remote Desktops with Turbo​VNC</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -374,6 +671,6 @@ topic is running by listing active topics using the command:</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Replaying Recorded Data", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "VPN Configuration", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/avc_wiki">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730418991237">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731044791214">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/avc_wiki/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/branding/avc_rounded_logo.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730418991237" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.731044791214" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730418991237" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.731044791214" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -185,115 +185,131 @@
         <span>ROS Basics</span>
     </h1>
 </doc-anchor-target>
-<p>For the vehicle to run as we need it to, it needs to have a backend program that is able to coordinate the flow of data between the sensors and the software that converts that sensor data into controls, detections, and other more relevant data for the vehicle to run autonomously. ROS is the solution that the team, and many others in the robotics industry, uses in order to do this coordination.</p>
-<p>This page provides a general high-level overview of basic components in ROS, as well as the command-line tools that allow for inspection of these components.</p>
+<p>For the vehicle to run as we need it to, it needs to have a backend program that
+is able to coordinate the flow of data between the sensors and the software that
+converts that sensor data into controls, detections, and other more relevant data
+for the vehicle to run autonomously. ROS is the solution that the team, and many
+others in the robotics industry, uses in order to do this coordination.</p>
+<p>This page provides a general high-level overview of basic components in ROS, as
+well as the command-line tools that allow for inspection of these components.</p>
 <doc-anchor-target id="what-is-ros">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#what-is-ros">#</doc-anchor-trigger>
         <span>What is ROS?</span>
     </h2>
 </doc-anchor-target>
-<hr />
-<p>ROS is middleware used to lighten the development load of robotics applications. Before software like ROS, developing any robotics platform required many man hours of development on features needed to just get the system running. If you were developing a system as complex as ours from scratch, you would need to develop every component in the system, from data management to testing. The project itself may even stall before the interesting research happens!</p>
-<p>With ROS, most of the backend work is taken care of by the software itself. ROS is also a modular framework, meaning that you can swap different components as you see fit, only having to worry about inputs and outputs with each software component and not about how to handle all the low-level dataflow and implementation details.</p>
+<p>ROS is middleware used to lighten the development load of robotics applications.
+Before software like ROS, developing any robotics platform required many man hours
+of development on features needed to just get the system running. If you were
+developing a system as complex as ours from scratch, you would need to develop
+every component in the system, from data management to testing. The project
+itself may even stall before the interesting research happens!</p>
+<p>With ROS, most of the backend work is taken care of by the software itself. ROS
+is also a modular framework, meaning that you can swap different components as
+you see fit, only having to worry about inputs and outputs with each software
+component and not about how to handle all the low-level dataflow and implementation
+details.</p>
 <doc-anchor-target id="relevant-links">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#relevant-links">#</doc-anchor-trigger>
-        <span>Relevant Links:</span>
+        <span>Relevant Links</span>
     </h2>
 </doc-anchor-target>
-<hr />
 <p>More comprehensive introductions to ROS can be found here:</p>
 <ul>
 <li><a href="https://roboticsbackend.com/what-is-ros/">What Is ROS?</a></li>
 <li><a href="http://wiki.ros.org/ROS/Introduction">Introduction to ROS</a></li>
 </ul>
-<p>Additionally, if at any time you cannot find the answers you are looking for here, the ROS wiki is a great resource that will fill you in on the finer details without having you frantically google everything:</p>
+<p>Additionally, if at any time you cannot find the answers you are looking for
+here, the ROS wiki is a great resource that will fill you in on the finer
+details without having you frantically google everything:</p>
 <ul>
 <li><a href="http://wiki.ros.org/ROS">http://wiki.ros.org/ROS</a></li>
 </ul>
-<p>Finally, each section will have links directing you towards comprehensive documentation provided by the ROS development team itself. Most of the information is explained in much more detail there, and many of the command-line instructions found below are a simple subset of the functionality they actually offer. <strong>It is encouraged that you read this links during/after your time reading this document.</strong></p>
+<p>Finally, each section will have links directing you towards comprehensive
+documentation provided by the ROS development team itself. Most of the information
+is explained in much more detail there, and many of the command-line instructions
+found below are a simple subset of the functionality they actually offer.
+<strong>It is encouraged that you read this links during/after your time reading this document.</strong></p>
 <doc-anchor-target id="packages">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#packages">#</doc-anchor-trigger>
         <span>Packages</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/Packages">ROS Reference for Packages</a></p>
 <p>Packages are at the core of ROS’ system. Packages contain all nodes, services, message types, and more that are present in the system. At a basic level, however, they are just directories containing source code and configuration files allowing for separation of codebases based on their purpose. This is ROS’ way of handling part of directory management for you.</p>
 <doc-anchor-target id="directories-and-files">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#directories-and-files">#</doc-anchor-trigger>
         <span>Directories and Files</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
-<hr />
 <p>A ROS package, at a basic level, is just a parent directory. This parent can contain anything, but the files subdirectories that are relevant to the package are explained below:</p>
 <doc-anchor-target id="src">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#src">#</doc-anchor-trigger>
         <span><code v-pre>./src/</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This is where all of your python source code will be stored, and in that source code will be nodes, services, and other coded functionality on the vehicle.</p>
 <doc-anchor-target id="srcpackage_name">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#srcpackage_name">#</doc-anchor-trigger>
         <span><code v-pre>./src/package_name</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This is where all of your C++ source code will be stored, and in that source code will be nodes, services, and other coded functionality on the vehicle.</p>
 <doc-anchor-target id="cmakeliststxt">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#cmakeliststxt">#</doc-anchor-trigger>
         <span><code v-pre>./CMakeLists.txt</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This is the cmake build file for the package, and it is required for building and running the package. Stored in here are all the cmake directives and other information needed to actually build the package for use. I will not go into the contents of this file here, as it is quite complex and is created when building a package (<em>See Development in ROS).</em> For more information about the contents of this file, you can also refer to <a href="http://wiki.ros.org/catkin/CMakeLists.txt">ROS’ CMakeLists documentation</a>.</p>
 <doc-anchor-target id="packagexml">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#packagexml">#</doc-anchor-trigger>
         <span><code v-pre>./package.xml</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This file is the package manifest, and it is another file required for building and running from a package. Information here is similar to <code v-pre>CMakeLists.txt</code> , and similarly, I will not go into the file contents due to complexity. For information, you can also refer to <a href="http://wiki.ros.org/catkin/package.xml">ROS’ package.xml documentation</a>.</p>
 <doc-anchor-target id="msg">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#msg">#</doc-anchor-trigger>
         <span><code v-pre>./msg/</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This folder will contain all custom message types defined in the package. Most packages will not need this, as there are both ROS provided and custom defined messages already defined in the system that should suffice. If not, however, this folder is here.</p>
 <p><em>More about ROS messages below.</em></p>
 <doc-anchor-target id="srv">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#srv">#</doc-anchor-trigger>
         <span><code v-pre>./srv/</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This folder will contain all custom defined service types. If you are creating a service, you will define the data the service will request and reply here.</p>
 <doc-anchor-target id="scripts">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#scripts">#</doc-anchor-trigger>
         <span><code v-pre>./scripts/</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This folder will contain any executable scripts needed to run the package here, as well as any you develop that will be relevant to package use. Nodes/services will not be defined here, but if you, for example, use a shell script in a node or service, it would be placed here.</p>
 <doc-anchor-target id="includepackage_name">
-    <h3>
+    <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#includepackage_name">#</doc-anchor-trigger>
         <span><code v-pre>./include/package_name</code></span>
-    </h3>
+    </h4>
 </doc-anchor-target>
 <p>This directory is where all of your c++ header files will go if applicable.</p>
 <doc-anchor-target id="package-inspection">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#package-inspection">#</doc-anchor-trigger>
         <span>Package Inspection</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
-<hr />
-<p>ROS provides the <code v-pre>rospack</code> command-line tool in order to inspect packages:https://docs.ros.org/en/independent/api/rospkg/html/rospack.html</p>
+<p>ROS provides the <code v-pre>rospack</code> command-line tool in order to inspect packages:<a href="https://docs.ros.org/en/independent/api/rospkg/html/rospack.html">https://docs.ros.org/en/independent/api/rospkg/html/rospack.html</a></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash"># this will list all packages
 rospack list
@@ -305,21 +321,20 @@ rospack find {package_name}
 rospack depends {package_name}</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="data-flow">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#data-flow">#</doc-anchor-trigger>
         <span>Data Flow</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>Data flow in ROS is described more technically here: <a href="http://wiki.ros.org/ROS/Concepts">ROS Concepts</a></p>
 <p>In ROS, data flow is handled by a peer-to-peer network of individual pieces of software. These &quot;nodes&quot; are able to request and output data as you see fit. ROS handles this quite smartly, and loosely couples building blocks of software and data together to allow for software to be changed in a modular fashion.</p>
 <doc-anchor-target id="messages">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#messages">#</doc-anchor-trigger>
         <span>Messages</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/msg">ROS Reference for Messages</a></p>
-<hr />
 <p>Messages, and message types, are the primary abstraction used for data in the system. ROS provides wrappers for many primitive types to enable cohesion in the system.</p>
 <p>Each message in ROS has a type, and ROS provides many types out of the box. These types can be easily googled, but a full list of primitive types supplied is found here:</p>
 <p><a href="http://docs.ros.org/en/noetic/api/std_msgs/html/index-msg.html">http://docs.ros.org/en/noetic/api/std_msgs/html/index-msg.html</a></p>
@@ -327,10 +342,10 @@ rospack depends {package_name}</code></pre>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash"># Standard metadata for higher-level stamped data types.
 # NOTE: stamped types mean that they have this header
-# This is generally used to communicate timestamped data 
+# This is generally used to communicate timestamped data
 # in a particular coordinate frame.
-# 
-# sequence ID: consecutively increasing ID 
+#
+# sequence ID: consecutively increasing ID
 uint32 seq
 #Two-integer timestamp that is expressed as:
 # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
@@ -349,13 +364,12 @@ rosmsg show {message_type}
 rosmsg show std_msgs/Header</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="topics">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#topics">#</doc-anchor-trigger>
         <span>Topics</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/Topics">ROS Reference for Topics</a></p>
-<hr />
 <p>Topics are a fundamental way ROS moves messages through the vehicle system. Topics are published and subscribed to by nodes, allowing nodes to exchange data with each other.</p>
 <p>Topics have a very specific naming scheme in ROS:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -372,7 +386,7 @@ rosmsg show std_msgs/Header</code></pre>
 <pre class="language-bash"><code v-pre class="language-bash"># this will produce a list of topics currently available in the system
 rostopic list
 
-# this will show you more information about a specific topic, like the message 
+# this will show you more information about a specific topic, like the message
 # type, which node is providing it, etc.
 rostopic info {topic_name}
 
@@ -380,13 +394,12 @@ rostopic info {topic_name}
 rostopic show {topic_name}</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="nodes">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#nodes">#</doc-anchor-trigger>
         <span>Nodes</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/Nodes">ROS Reference for Nodes</a></p>
-<hr />
 <p>A node in ROS is one of the fundamental building blocks of the software. A node serves as the basic computational unit in ROS, and the brunt of the work you do on the vehicle is node-based.</p>
 <p>A node in ROS can both publish and subscribe to topics in the ROS system. Nodes can also provide services, which are discussed in the next section.</p>
 <blockquote>
@@ -400,22 +413,20 @@ Subscribing: Getting data from another node in the ROS system</p>
 <pre class="language-bash"><code v-pre class="language-bash"># this will list all the nodes available in the current system
 rosnode list
 
-# this will display information about a node, such as what messages are being 
+# this will display information about a node, such as what messages are being
 # published by and subscribed to by the node
 rosnode info /{node_name}
 
 # this will kill a node that is running
 rosnode kill /{node_name}</code></pre>
 </doc-codeblock></div>
-<hr />
 <doc-anchor-target id="services">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#services">#</doc-anchor-trigger>
         <span>Services</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/Services">ROS Reference for Services</a></p>
-<hr />
 <p>With publishing and subscribing, you have a data flow that provides data from many nodes in the system to many other nodes in the system, The caveat is that dataflow in this structure is largely one way.</p>
 <p>ROS services provide a different way of implementing data flow in ROS, a request/reply based framework. This is very useful when building up quick computations and actions that do not need to be integrated in the larger system. For example, if you want a quick way to change settings on the vehicle, use a service! You can configure a service to change those settings, and then configure it to reply on a success.</p>
 <p>ROS services are defined and displayed similar to messages. The key difference is that a message will have one single section of fields defining the datatypes shown in the message, whereas services have two. The first is the <code v-pre>request</code> body, and this defines all the data the service needs to handle the request. The second is the <code v-pre>response</code> body, which defines the data the service will provide upon completing the request. A service will look something like this (example pulled from <a href="http://wiki.ros.org/srv">http://wiki.ros.org/srv</a>):</p>
@@ -464,13 +475,12 @@ rosservice type {service}
 rosservice call /{service-name} {service_input}</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="parameters">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#parameters">#</doc-anchor-trigger>
         <span>Parameters</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/Parameter%20Server">ROS Reference for Parameters</a></p>
-<hr />
 <p>Parameters are how to set global constants in ROS. These are useful in many areas, such as configuration settings, numerical constants, and much more. You will use services for constants designed not to be changed often, as parameters are not used for high frequency dataflow.</p>
 <p>As these are designed to be constants, the datatypes available for params are as follows:</p>
 <ul>
@@ -495,13 +505,12 @@ rosparam get {parameter_name}
 rosparam set {parameter_name} {value}</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="bags">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#bags">#</doc-anchor-trigger>
         <span>Bags</span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><a href="http://wiki.ros.org/rosbag">ROS Reference for Bags</a></p>
-<hr />
 <p>In a robotics system, you may not have access to the robot whenever you need to develop something. Additionally, it is not practical to assume that you can spin up the vehicle to actively test what your software does in response to vehicle data. ROS provides a data storage solution called <code v-pre>rosbags</code> that solves this.</p>
 <p>Specifically in our development environment, you have access to bags recorded at many times of the year with sensor data from the vehicle. These bags can be played, and when they are played, will spawn topics with data collected from that time. This will simulate what the car would actually output when it is running, and will allow you to rapidly test and develop.</p>
 <p>Similar to all the other items above, there is a command-line tool for you to create and play these bags: <a href="http://wiki.ros.org/rosbag/Commandline">http://wiki.ros.org/rosbag/Commandline</a></p>
@@ -531,7 +540,7 @@ rosbag play -l {bag_file}</code></pre>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Welcome</span>
+                                                <span class="block mt-1">Autonomous Vehicle Club Wiki</span>
                                             </span>
                                         </a>
                                     </div>

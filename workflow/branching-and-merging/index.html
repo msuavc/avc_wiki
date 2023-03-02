@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/avc_wiki">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730418991237">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731044791214">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,12 +32,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/avc_wiki/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/branding/avc_rounded_logo.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730418991237" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.731044791214" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730418991237" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730418991237" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731044791214" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.731044791214" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -218,18 +218,11 @@ ROS nodes depend on multiple other nodes in order to function.</p>
 is not going to be developed further until that is done, and we can&#x27;t have that.</p>
 <p><strong>In comes branches. Branches separate changes so that you can&#x27;t break everyones code by yourself, only yours.</strong></p>
 <p>To manage all this, we will be using the <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">Git Feature Branch Workflow</a>.</p>
-<doc-anchor-target id="in-practice">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#in-practice">#</doc-anchor-trigger>
-        <span>In Practice</span>
-    </h1>
-</doc-anchor-target>
-<p>Now theoretically, this concept works wonders. In practice, here is how this is executed:</p>
-<doc-anchor-target id="if-a-branch-hasnt-been-created">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#if-a-branch-hasnt-been-created">#</doc-anchor-trigger>
-        <span>If A Branch Hasn&#x27;t Been Created</span>
-    </h2>
+<doc-anchor-target id="creating-branches">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-branches">#</doc-anchor-trigger>
+        <span>Creating Branches</span>
+    </h3>
 </doc-anchor-target>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
@@ -245,10 +238,8 @@ is not going to be developed further until that is done, and we can&#x27;t have 
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>Branching Responsibilities</h5>
-<p>Team leads and project leads
-will handle branch creation for most features, as they will be
-scoped and discussed prior to team member development. Feel free to create your own branch
-by following these instructions.</p>
+<p>Feel free to create your own branch
+by following these instructions, or ask a lead to do it for you</p>
         </div>
     </div>
 </div>
@@ -266,7 +257,8 @@ then select &quot;New branch.&quot; On the next page, <strong>make sure you sele
 </li>
 <li>
 <ol type="a" start="2">
-<li><p>With a local checkout of the repository, first make sure you are on a recent version of the dev branch:</p>
+<li>With a local checkout of the repository, first make sure you are on a recent version of the dev branch:</li>
+</ol>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">git checkout dev; git pull</code></pre>
 </doc-codeblock></div>
@@ -274,8 +266,6 @@ then select &quot;New branch.&quot; On the next page, <strong>make sure you sele
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">git checkout -b feature-your-feature-name-here</code></pre>
 </doc-codeblock></div>
-</li>
-</ol>
 </li>
 </ul>
 </li>
