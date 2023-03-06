@@ -1,14 +1,16 @@
-input: src/ # The local path from this retype.yml file to your content files.
-          # See also: output
+input:
+  src/ # The local path from this retype.yml file to your content files.
+  # See also: output
 
 # -----------------------------------------------------------------------------
 
-output: build/ # Custom path to the output directory.
-                # See also: input
+output:
+  build/ # Custom path to the output directory.
+  # See also: input
 
 # -----------------------------------------------------------------------------
 
-url: https://msuavc.github.io/avc_wiki              # The base URL of your website.
+url: https://msuavc.github.io/avc_wiki # The base URL of your website.
 # url: docs.example.com          # Can also be a sub-domain.
 # url: example.com/docs          # Can also include a sub-folder path.
 # url: https://example.com/docs/ # Can also include a protocol.
@@ -16,30 +18,30 @@ url: https://msuavc.github.io/avc_wiki              # The base URL of your websi
 # -----------------------------------------------------------------------------
 
 # poweredByRetype: true # Set to false to remove the Powered by Retype branding.
-                      # A Retype Pro license is required.
-                      # See: https://retype.com/pro
+# A Retype Pro license is required.
+# See: https://retype.com/pro
 
 # -----------------------------------------------------------------------------
 
 branding:
-  title: AVC               # Your custom website title; keep it short.
-  logo: static/branding/avc_rounded_logo.png          # Path to a logo file.
+  title: AVC # Your custom website title; keep it short.
+  logo: static/branding/avc_rounded_logo.png # Path to a logo file.
   logoDark: static/branding/avc_rounded_logo.png # Path to a logo file to use in dark mode.
-  logoAlign: left               # Align the logo to the right or the left.
+  logoAlign: left # Align the logo to the right or the left.
   label: Docs # Optional label. To remove the label, remove this config.
   colors:
-    label:                  # Label colors
-      text: "#ffffff"       # Custom color for the label text.
+    label: # Label colors
+      text: "#ffffff" # Custom color for the label text.
       background: "#25a826" # Custom color for the label background.
 
 # -----------------------------------------------------------------------------
 
 links: # A list of custom links to add to the top bar of the generated website.
-       # See also: footer.links
-    - text: Home
-      link: /index.md
-    - text: Tutorials
-      link: /learning/tutorials.md
+  # See also: footer.links
+  - text: Home
+    link: /index.md
+  - text: Tutorials
+    link: /learning/tutorials.md
   # - text: Home      # The text to use for the link
   #   link: https://example.com/ # Link to an internal file or external URL.
   # - text: API
@@ -52,16 +54,17 @@ links: # A list of custom links to add to the top bar of the generated website.
 
 footer:
   copyright: "© All rights reserved." # A custom copyright statement.
-  links:               # A list of links to include in the footer.
-                       # See also: links
-    - text: License    # The text to use for the link
+  links: # A list of links to include in the footer.
+    # See also: links
+    - text: License # The text to use for the link
       link: license.md # Point to an internal file or external URL.
 
 # -----------------------------------------------------------------------------
 
 cache:
-  busting: query # Cache busting strategy.
-                 # Options include: none | path | query (default)
+  strategy:
+    path # Cache busting strategy.
+    # Options include: none | path | query (default)
 
 # -----------------------------------------------------------------------------
 
@@ -77,33 +80,35 @@ cache:
 
 # -----------------------------------------------------------------------------
 
-editor:         # Configure the page live editor functionality that is only
-                # available when `retype watch` is running.
+editor: # Configure the page live editor functionality that is only
+  # available when `retype watch` is running.
   enabled: true # Set to false to disable and hide the live editor.
 
 # -----------------------------------------------------------------------------
 
 exclude: # A list of files or folders to exclude from the build process.
-         # See also: include
-  - "*_temp/"      # Wildcards are valid.
+  # See also: include
+  - "*_temp/" # Wildcards are valid.
   - "/src/temp.md" # Exclude a specific file.
 
 # -----------------------------------------------------------------------------
 
-favicon: static/branding/avc_rounded_logo.png # Path to a custom favicon, or.
-                            # just put a favicon.ico in your project root.
+favicon:
+  static/branding/avc_rounded_logo.png # Path to a custom favicon, or.
+  # just put a favicon.ico in your project root.
 
 # -----------------------------------------------------------------------------
 
 generator:
-  recase: all # Set to `none` to not recase any file or folder names.
-              # By default, all generated file and folder names are
-              # generated in all lowercase.
+  recase:
+    all # Set to `none` to not recase any file or folder names.
+    # By default, all generated file and folder names are
+    # generated in all lowercase.
 
 # -----------------------------------------------------------------------------
 
-include:   # A list of files or folders to include in the build process.
-           # See also: exclude
+include: # A list of files or folders to include in the build process.
+  # See also: exclude
   - "*.py" # Wildcards are valid.
 
 # -----------------------------------------------------------------------------
@@ -124,7 +129,7 @@ integrations:
 
 # -----------------------------------------------------------------------------
 
-markdown:          # Markdown configuration options.
+markdown: # Markdown configuration options.
   lineBreaks: soft # Switches between `soft` and `hard` line break modes.
 
 # -----------------------------------------------------------------------------
@@ -134,43 +139,48 @@ meta:
 
 # -----------------------------------------------------------------------------
 
-search:          # Custom configuration of the website search component.
+search: # Custom configuration of the website search component.
   hotkeys:
-    - "/"        # Keyboard key to set the cursor focus into the search field.
+    - "/" # Keyboard key to set the cursor focus into the search field.
   maxResults: 20 # Max number of search results to render.
-  minChars: 2    # Min number of characters required to trigger a sear.ch
-  mode: full     # The search index creation mode.
-                 # Options include: full | partial | basic
+  minChars: 2 # Min number of characters required to trigger a sear.ch
+  mode:
+    full # The search index creation mode.
+    # Options include: full | partial | basic
   noResultsFoundMsg: "No results" # Message when no results are found.
   placeholder: Search # Placeholder text used in the search input field.
 
 # -----------------------------------------------------------------------------
 
 server:
-  host: 127.0.0.1       # Serve the website from this host location.
-  host: 127.0.0.1:5005  # Custom port also supported.
-  port: 5005            # A custom port configurated separately from host.
+  host: 127.0.0.1 # Serve the website from this host location.
+  # host: 127.0.0.1:5005  # Custom port also supported.
+  port: 5005 # A custom port configurated separately from host.
   watch:
-    mode: memory        # Where to host files from during retype watch.
-                        # Options include: memory (default) | disk
-    polling: true       # How Retype will listen for file changes.
-                        # Options include: false (default) | true | number
-    validation: optimal # How thorough Retype is looking for changed files.
-                        # Options include: fast | full | optimal (default)
+    mode:
+      memory # Where to host files from during retype watch.
+      # Options include: memory (default) | disk
+    polling:
+      true # How Retype will listen for file changes.
+      # Options include: false (default) | true | number
+    validation:
+      optimal # How thorough Retype is looking for changed files.
+      # Options include: fast | full | optimal (default)
 
 # -----------------------------------------------------------------------------
 
-snippets:      # Custom code snippets configuration.
-               # See: https://retype.com/components/code-snippet
+snippets: # Custom code snippets configuration.
+  # See: https://retype.com/components/code-snippet
   lineNumbers: # A list of language strings to enable line numbering on.
     - python
     - js
-    - none     # Use `none` to disable line-numbering on snippets.
+    - none # Use `none` to disable line-numbering on snippets.
 
 # -----------------------------------------------------------------------------
 
 templating:
   enabled: true # Enable or disable the Retype content templating engine.
-  liquid: false # Is Liquid syntax {% ... %} enabled?
-                # If true, Retype is incompatible with
-                # GitBook style of component configuration.
+  liquid:
+    false # Is Liquid syntax {% ... %} enabled?
+    # If true, Retype is incompatible with
+    # GitBook style of component configuration.

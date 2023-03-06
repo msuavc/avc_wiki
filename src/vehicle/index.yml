@@ -1,0 +1,6 @@
+label: Vehicle
+icon: plug
+order: 996 # this means that this will be the highest placed folder
+authors:
+  - name: Dominic Mazza
+    email: mazzadom@msu.edu
